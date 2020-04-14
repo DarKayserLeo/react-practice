@@ -19,22 +19,23 @@ const CreateWorkshop = () => {
     dispatch(appActions.removeWorkshopType(workshopTypes, index));
   };
 
+  const mapWorkshop = (type, index) => {
+    switch (type) {
+      case WorkshopType.REGULAR:
+      case WorkshopType.DISCUSSION:
+        return <WorkshopRegular key={index} index={index} type={type} onRemove={removeElement} />;
+      case WorkshopType.QA:
+        return <WorkshopQA key={index} index={index} type={type} onRemove={removeElement} />;
+      case WorkshopType.DND:
+        return <WorkshopDND key={index} index={index} type={type} onRemove={removeElement} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="container">
-      <Accordion>
-        {workshopTypes.map(
-          (type, index) =>
-            ((type === WorkshopType.REGULAR || type === WorkshopType.DISCUSSION) && (
-              <WorkshopRegular key={index} index={index} type={type} onRemove={removeElement} />
-            )) ||
-            (type === WorkshopType.QA && (
-              <WorkshopQA key={index} index={index} type={type} onRemove={removeElement} />
-            )) ||
-            (type === WorkshopType.DND && (
-              <WorkshopDND key={index} index={index} type={type} onRemove={removeElement} />
-            ))
-        )}
-      </Accordion>
+      <Accordion>{workshopTypes.map(mapWorkshop)}</Accordion>
       <WorkshopDropdown />
     </div>
   );
