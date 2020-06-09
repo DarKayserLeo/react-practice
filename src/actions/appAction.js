@@ -21,3 +21,11 @@ export function removeWorkshopType(payload, index) {
     dispatch(_removeWorkshopType(newPayload));
   };
 }
+
+export function test(payload, index) {
+  return (dispatch) => {
+    const newPayload = [...payload];
+    newPayload.splice(index, 1);
+    dispatch(_removeWorkshopType(newPayload));
+  };
+}
