@@ -3,4 +3,5 @@ export const WorkshopType = {
   QA: 'qa',
   DND: 'dnd',
   DISCUSSION: 'discussion',
+  TEST: 'test',
 };
