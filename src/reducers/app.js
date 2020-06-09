@@ -8,7 +8,7 @@ export default function AppReducer(state = initState, action) {
       return { ...state, workshopTypes: [...state.workshopTypes, ...action.payload] };
     case 'REMOVE_WORKSHOP_TYPE':
       return { ...state, workshopTypes: action.payload };
-    default:
+    default: //default case just return current state
       return state;
   }
 }
